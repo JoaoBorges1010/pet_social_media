@@ -3,20 +3,23 @@ import { Controller } from "@hotwired/stimulus";
 // Connects to data-controller="modal-handler"
 export default class extends Controller {
   static targets = ["modal"];
-  connect() {}
+  connect() {
+    this.modalTarget.showModal();
+  }
 
   open(e) {
     e.preventDefault();
     this.modalTarget.showModal();
+
+    this.modalTarget.addEventListener("click", (e) => this.backdropClick(e));
   }
 
-  closeModal(e) {
+  close(e) {
+    e.preventDefault();
     this.modalTarget.close();
   }
 
-  clickOutside(e) {
-    if (e.target === this.modalTarget) {
-      this.modalTarget.close();
-    }
+  backdropClick(event) {
+    event.target === this.modalTarget && this.close(event);
   }
 }

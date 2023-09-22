@@ -6,69 +6,36 @@
           <%= image_tag("Life4Pets-logo", class: "life-4-pets-logo-home")  %>
         <% end %>
       </div>
-      <div data-controller="modal-handler" data-action="click->modal-handler#clickOutside">
-        <%= link_to "", data: { action: "click->modal-handler#open" } do %>
-          <div class="flex items-center text-gray-600">
+      <div data-controller="modal-handler">
+        <%= link_to "" do %>
+          <div class="flex items-center text-gray-600" data-action="click->modal-handler#open" >
             <svg class="pr-2" fill="grey" xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 448 512"><path d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM200 344V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H248v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg>
             Create
           </div>
-          <dialog
-            data-modal-handler-target="modal"
-            class="fixed left-0 top-0 z-[1055] bg-gray-500 bg-opacity-75 transition-opacity  h-full w-full overflow-y-auto overflow-x-hidden outline-none">
-            <div class="relative flex min-h-[calc(100%-1rem)] w-auto translate-y-[-50px] items-center transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:min-h-[calc(100%-3.5rem)] min-[576px]:max-w-[500px]">
-              <div
-                class=" relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none ">
-                <div
-                  class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-                  <!--Modal title-->
-                  <h5
-                    class="text-xl font-medium leading-normal text-neutral-800 "
-                    id="exampleModalCenterTitle">
-                    Modal title
-                  </h5>
-                  <!--Close button-->
-                  <button
-                    data-action="click->modal-handler#closeModal"
-                    type="button"
-                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="h-6 w-6">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
+            <div>
+              <dialog data-modal-handler-target="modal" class="p-0 backdrop:bg-gray-400 backdrop:bg-opacity-50 open:animate-fade-in open:backdrop:animate-fade-in">
+                <div class="fixed top-0 left-0 right-0 z-50 w-full overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full" >
+                  <div class=" relative top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] w-full max-w-lg max-h-full rounded-lg shadow" >
+                    <div class="relative bg-white rounded-lg shadow p-4 ">
+                      <div class="flex items-center justify-between p-5 rounded-t">
+                        <button type="button" data-action="click->modal-handler#close" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center">
+                          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                          </svg>
+                          <span class="sr-only">Close modal</span>
+                        </button>
+                      </div>
+                      <div class="p-6 space-y-6">
+                          CONTENT
+                      </div>
+                      <div class="flex items-center px-6 pt-2 space-x-2 border-t border-gray-200 rounded-b">
+                        <button type="button" data-action="click->modal-handler#close" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 mt-2 text-center">Upload</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-
-                <!--Modal body-->
-                <div class="relative p-4">
-                  <p>This is a vertically centered modal.</p>
-                </div>
-
-                <!--Modal footer-->
-                <div
-                  class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 ">
-                  <button
-                    data-action="click->modal-handler#closeModal"
-                    type="button"
-                    class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
-                    Close
-                  </button>
-                  <button
-                    type="button"
-                    class="ml-1 inline-block rounded bg-blue-700 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
-                    Save changes
-                  </button>
-                </div>
-              </div>
+              </dialog>
             </div>
-          </dialog>
         <% end %>
       </div>
       <div>
