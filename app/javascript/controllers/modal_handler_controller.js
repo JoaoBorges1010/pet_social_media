@@ -3,9 +3,7 @@ import { Controller } from "@hotwired/stimulus";
 // Connects to data-controller="modal-handler"
 export default class extends Controller {
   static targets = ["modal"];
-  connect() {
-    this.modalTarget.showModal();
-  }
+  connect() {}
 
   open(e) {
     e.preventDefault();
